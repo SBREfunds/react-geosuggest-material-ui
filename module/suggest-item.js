@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -6,11 +6,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _classnames2 = require('classnames');
+var _classnames2 = require("classnames");
 
 var _classnames3 = _interopRequireDefault(_classnames2);
 
@@ -50,7 +50,7 @@ var SuggestItem = function (_React$Component) {
   }
 
   _createClass(SuggestItem, [{
-    key: 'makeBold',
+    key: "makeBold",
 
     /**
      * Makes a text bold
@@ -60,8 +60,8 @@ var SuggestItem = function (_React$Component) {
      */
     value: function makeBold(element, key) {
       return _react2.default.createElement(
-        'b',
-        { className: 'geosuggest__item__matched-text', key: key },
+        "b",
+        { className: "geosuggest__item__matched-text", key: key },
         element
       );
     }
@@ -74,7 +74,7 @@ var SuggestItem = function (_React$Component) {
      */
 
   }, {
-    key: 'formatMatchedText',
+    key: "formatMatchedText",
     value: function formatMatchedText(userInput, suggest) {
       if (!userInput || !suggest.matchedSubstrings) {
         return suggest.label;
@@ -85,8 +85,8 @@ var SuggestItem = function (_React$Component) {
           end = start + length,
           boldPart = this.makeBold(suggest.label.substring(start, end), suggest.label);
 
-      var pre = '',
-          post = '';
+      var pre = "",
+          post = "";
 
       if (start > 0) {
         pre = suggest.label.slice(0, start);
@@ -96,7 +96,7 @@ var SuggestItem = function (_React$Component) {
       }
 
       return _react2.default.createElement(
-        'span',
+        "span",
         null,
         pre,
         boldPart,
@@ -110,7 +110,7 @@ var SuggestItem = function (_React$Component) {
      */
 
   }, {
-    key: 'componentWillReceiveProps',
+    key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(nextProps) {
       if (nextProps.isActive && !this.props.isActive) {
         this.scrollIfNeeded();
@@ -123,7 +123,7 @@ var SuggestItem = function (_React$Component) {
      */
 
   }, {
-    key: 'scrollIfNeeded',
+    key: "scrollIfNeeded",
     value: function scrollIfNeeded() {
       var el = this.ref,
           parent = el.parentElement,
@@ -141,7 +141,7 @@ var SuggestItem = function (_React$Component) {
      */
 
   }, {
-    key: 'render',
+    key: "render",
 
 
     /**
@@ -149,10 +149,8 @@ var SuggestItem = function (_React$Component) {
      * @return {Function} The React element to render
      */
     value: function render() {
-      var _this2 = this;
-
       var suggest = this.props.suggest,
-          classes = (0, _classnames3.default)('geosuggest__item', this.props.className, this.props.suggestItemClassName, { 'geosuggest__item--active': this.props.isActive }, _defineProperty({}, this.props.activeClassname, this.props.activeClassname ? this.props.isActive : null));
+          classes = (0, _classnames3.default)("geosuggest__item", this.props.className, this.props.suggestItemClassName, { "geosuggest__item--active": this.props.isActive }, _defineProperty({}, this.props.activeClassname, this.props.activeClassname ? this.props.isActive : null));
 
       var content = suggest.label;
 
@@ -163,15 +161,15 @@ var SuggestItem = function (_React$Component) {
       }
 
       return _react2.default.createElement(
-        'li',
-        { className: classes,
-          ref: function ref(li) {
-            return _this2.ref = li;
-          },
-          style: this.props.style,
+        "li",
+        {
+          className: classes
+          //ref={li => this.ref = li}
+          , style: this.props.style,
           onMouseDown: this.props.onMouseDown,
           onMouseOut: this.props.onMouseOut,
-          onClick: this.onClick },
+          onClick: this.onClick
+        },
         content
       );
     }
@@ -189,6 +187,6 @@ var SuggestItem = function (_React$Component) {
 exports.default = SuggestItem;
 SuggestItem.defaultProps = {
   isActive: false,
-  className: '',
+  className: "",
   suggest: {}
 };

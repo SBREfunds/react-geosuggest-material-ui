@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -10,35 +10,35 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _classnames = require('classnames');
+var _classnames = require("classnames");
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _lodash = require('lodash.debounce');
+var _lodash = require("lodash.debounce");
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _defaults = require('./defaults');
+var _defaults = require("./defaults");
 
 var _defaults2 = _interopRequireDefault(_defaults);
 
-var _propTypes = require('./prop-types');
+var _propTypes = require("./prop-types");
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _filterInputAttributes = require('./filter-input-attributes');
+var _filterInputAttributes = require("./filter-input-attributes");
 
 var _filterInputAttributes2 = _interopRequireDefault(_filterInputAttributes);
 
-var _input = require('./input');
+var _input = require("./input");
 
 var _input2 = _interopRequireDefault(_input);
 
-var _suggestList = require('./suggest-list');
+var _suggestList = require("./suggest-list");
 
 var _suggestList2 = _interopRequireDefault(_suggestList);
 
@@ -52,7 +52,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 // Escapes special characters in user input for regex
 function escapeRegExp(str) {
-  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
+  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
 }
 
 /**
@@ -94,11 +94,11 @@ var Geosuggest = function (_React$Component) {
     };
 
     _this.onNext = function () {
-      return _this.activateSuggest('next');
+      return _this.activateSuggest("next");
     };
 
     _this.onPrev = function () {
-      return _this.activateSuggest('prev');
+      return _this.activateSuggest("prev");
     };
 
     _this.onSelect = function () {
@@ -136,7 +136,7 @@ var Geosuggest = function (_React$Component) {
 
       _this.setState({
         isSuggestsHidden: true,
-        userInput: _typeof(suggest.label) !== 'object' ? suggest.label : suggest.description
+        userInput: _typeof(suggest.label) !== "object" ? suggest.label : suggest.description
       });
 
       if (suggest.location) {
@@ -172,7 +172,7 @@ var Geosuggest = function (_React$Component) {
 
 
   _createClass(Geosuggest, [{
-    key: 'componentWillReceiveProps',
+    key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(props) {
       if (this.props.initialValue !== props.initialValue) {
         this.setState({ userInput: props.initialValue });
@@ -186,9 +186,9 @@ var Geosuggest = function (_React$Component) {
      */
 
   }, {
-    key: 'componentWillMount',
+    key: "componentWillMount",
     value: function componentWillMount() {
-      if (typeof window === 'undefined') {
+      if (typeof window === "undefined") {
         return;
       }
 
@@ -198,8 +198,9 @@ var Geosuggest = function (_React$Component) {
       /* istanbul ignore next */
       if (!googleMaps) {
         if (console) {
-          console.error( // eslint-disable-line no-console
-          'Google map api was not found in the page.');
+          console.error(
+          // eslint-disable-line no-console
+          "Google map api was not found in the page.");
         }
         return;
       }
@@ -214,7 +215,7 @@ var Geosuggest = function (_React$Component) {
      */
 
   }, {
-    key: 'componentWillUnmount',
+    key: "componentWillUnmount",
     value: function componentWillUnmount() {
       clearTimeout(this.timer);
     }
@@ -240,7 +241,7 @@ var Geosuggest = function (_React$Component) {
      */
 
   }, {
-    key: 'focus',
+    key: "focus",
 
 
     /**
@@ -255,7 +256,7 @@ var Geosuggest = function (_React$Component) {
      */
 
   }, {
-    key: 'blur',
+    key: "blur",
     value: function blur() {
       this.input.blur();
     }
@@ -266,7 +267,7 @@ var Geosuggest = function (_React$Component) {
      */
 
   }, {
-    key: 'update',
+    key: "update",
     value: function update(userInput) {
       this.setState({ userInput: userInput });
       this.props.onChange(userInput);
@@ -277,9 +278,9 @@ var Geosuggest = function (_React$Component) {
      */
 
   }, {
-    key: 'clear',
+    key: "clear",
     value: function clear() {
-      this.setState({ userInput: '' }, this.hideSuggests);
+      this.setState({ userInput: "" }, this.hideSuggests);
     }
 
     /**
@@ -287,7 +288,7 @@ var Geosuggest = function (_React$Component) {
      */
 
   }, {
-    key: 'searchSuggests',
+    key: "searchSuggests",
     value: function searchSuggests() {
       var _this2 = this;
 
@@ -300,7 +301,7 @@ var Geosuggest = function (_React$Component) {
         input: this.state.userInput
       };
 
-      ['location', 'radius', 'bounds', 'types'].forEach(function (option) {
+      ["location", "radius", "bounds", "types"].forEach(function (option) {
         if (_this2.props[option]) {
           options[option] = _this2.props[option];
         }
@@ -318,7 +319,7 @@ var Geosuggest = function (_React$Component) {
           _this2.updateSuggests(suggestsGoogle || [], // can be null
           function () {
             if (_this2.props.autoActivateFirstSuggest && !_this2.state.activeSuggest) {
-              _this2.activateSuggest('next');
+              _this2.activateSuggest("next");
             }
           });
         });
@@ -332,7 +333,7 @@ var Geosuggest = function (_React$Component) {
      */
 
   }, {
-    key: 'updateSuggests',
+    key: "updateSuggests",
     value: function updateSuggests() {
       var _this3 = this;
 
@@ -341,7 +342,7 @@ var Geosuggest = function (_React$Component) {
 
       var suggests = [],
           userInput = this.state.userInput,
-          regex = new RegExp(escapeRegExp(userInput), 'gim'),
+          regex = new RegExp(escapeRegExp(userInput), "gim"),
           skipSuggest = this.props.skipSuggest,
           maxFixtures = this.props.maxFixtures,
           fixturesSearched = 0,
@@ -388,7 +389,7 @@ var Geosuggest = function (_React$Component) {
      **/
 
   }, {
-    key: 'updateActiveSuggest',
+    key: "updateActiveSuggest",
     value: function updateActiveSuggest() {
       var suggests = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
@@ -410,7 +411,7 @@ var Geosuggest = function (_React$Component) {
      */
 
   }, {
-    key: 'showSuggests',
+    key: "showSuggests",
     value: function showSuggests() {
       this.searchSuggests();
       this.setState({ isSuggestsHidden: false });
@@ -421,7 +422,7 @@ var Geosuggest = function (_React$Component) {
      */
 
   }, {
-    key: 'activateSuggest',
+    key: "activateSuggest",
 
 
     /**
@@ -436,7 +437,7 @@ var Geosuggest = function (_React$Component) {
       }
 
       var suggestsCount = this.state.suggests.length - 1,
-          next = direction === 'next';
+          next = direction === "next";
       var newActiveSuggest = null,
           newIndex = 0,
           i = 0;
@@ -466,7 +467,7 @@ var Geosuggest = function (_React$Component) {
      */
 
   }, {
-    key: 'geocodeSuggest',
+    key: "geocodeSuggest",
 
 
     /**
@@ -510,18 +511,17 @@ var Geosuggest = function (_React$Component) {
      */
 
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
-      var _this5 = this;
-
       var attributes = (0, _filterInputAttributes2.default)(this.props),
-          classes = (0, _classnames2.default)('geosuggest', this.props.className, { 'geosuggest--loading': this.state.isLoading }),
+          classes = (0, _classnames2.default)("geosuggest", this.props.className, {
+        "geosuggest--loading": this.state.isLoading
+      }),
           shouldRenderLabel = this.props.label && attributes.id,
-          input = _react2.default.createElement(_input2.default, _extends({ className: this.props.inputClassName,
-        ref: function ref(i) {
-          return _this5.input = i;
-        },
-        value: this.state.userInput,
+          input = _react2.default.createElement(_input2.default, _extends({
+        className: this.props.inputClassName
+        //ref={i => this.input = i}
+        , value: this.state.userInput,
         label: this.props.label,
         error: this.props.error,
         ignoreEnter: !this.state.isSuggestsHidden,
@@ -535,8 +535,10 @@ var Geosuggest = function (_React$Component) {
         onNext: this.onNext,
         onPrev: this.onPrev,
         onSelect: this.onSelect,
-        onEscape: this.hideSuggests }, attributes)),
-          suggestionsList = _react2.default.createElement(_suggestList2.default, { isHidden: this.state.isSuggestsHidden,
+        onEscape: this.hideSuggests
+      }, attributes)),
+          suggestionsList = _react2.default.createElement(_suggestList2.default, {
+        isHidden: this.state.isSuggestsHidden,
         style: this.props.style.suggests,
         suggestItemStyle: this.props.style.suggestItem,
         userInput: this.state.userInput,
@@ -551,25 +553,25 @@ var Geosuggest = function (_React$Component) {
         onSuggestMouseDown: this.onSuggestMouseDown,
         onSuggestMouseOut: this.onSuggestMouseOut,
         onSuggestSelect: this.selectSuggest,
-        renderSuggestItem: this.props.renderSuggestItem });
+        renderSuggestItem: this.props.renderSuggestItem
+      });
 
       return _react2.default.createElement(
-        'div',
+        "div",
         { className: classes },
         _react2.default.createElement(
-          'div',
-          { className: 'geosuggest__input-wrapper' },
+          "div",
+          { className: "geosuggest__input-wrapper" },
           shouldRenderLabel && _react2.default.createElement(
-            'label',
-            { className: 'geosuggest__label',
-              htmlFor: attributes.id },
+            "label",
+            { className: "geosuggest__label", htmlFor: attributes.id },
             this.props.label
           ),
           input
         ),
         _react2.default.createElement(
-          'div',
-          { className: 'geosuggest__suggests-wrapper' },
+          "div",
+          { className: "geosuggest__suggests-wrapper" },
           suggestionsList
         )
       );
