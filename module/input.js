@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -8,23 +8,23 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactAddonsShallowCompare = require('react-addons-shallow-compare');
+var _reactAddonsShallowCompare = require("react-addons-shallow-compare");
 
 var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 
-var _classnames = require('classnames');
+var _classnames = require("classnames");
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _TextField = require('material-ui/TextField');
+var _TextField = require("material-ui/TextField");
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
-var _filterInputAttributes = require('./filter-input-attributes');
+var _filterInputAttributes = require("./filter-input-attributes");
 
 var _filterInputAttributes2 = _interopRequireDefault(_filterInputAttributes);
 
@@ -113,7 +113,7 @@ var Input = function (_React$Component) {
   }
 
   _createClass(Input, [{
-    key: 'shouldComponentUpdate',
+    key: "shouldComponentUpdate",
 
     /**
      * Whether or not the component should update
@@ -152,7 +152,7 @@ var Input = function (_React$Component) {
      */
 
   }, {
-    key: 'focus',
+    key: "focus",
 
 
     /**
@@ -167,7 +167,7 @@ var Input = function (_React$Component) {
      */
 
   }, {
-    key: 'blur',
+    key: "blur",
     value: function blur() {
       this.input.blur();
     }
@@ -178,15 +178,16 @@ var Input = function (_React$Component) {
      */
 
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       var attributes = (0, _filterInputAttributes2.default)(this.props),
-          classes = (0, _classnames2.default)('geosuggest__input', this.props.className);
+          classes = (0, _classnames2.default)("geosuggest__input", this.props.className);
 
-      return _react2.default.createElement(_TextField2.default, _extends({ className: classes,
-        id: 'geosuggest-material-ui',
-        ref: 'input',
-        type: 'text'
+      return _react2.default.createElement(_TextField2.default, _extends({
+        className: classes,
+        id: "geosuggest-material-ui"
+        //ref='input'
+        , type: "text"
       }, attributes, {
         error: this.props.error,
         label: this.props.label,
@@ -196,7 +197,8 @@ var Input = function (_React$Component) {
         onChange: this.onChange,
         onKeyPress: this.onKeyPress,
         onFocus: this.onFocus,
-        onBlur: this.onBlur }));
+        onBlur: this.onBlur
+      }));
     }
   }]);
 
@@ -210,13 +212,13 @@ var Input = function (_React$Component) {
 
 
 Input.defaultProps = {
-  className: '',
+  className: "",
   error: false,
-  value: '',
+  value: "",
   ignoreTab: false,
   onKeyDown: function onKeyDown() {},
   onKeyPress: function onKeyPress() {},
-  autoComplete: 'off'
+  autoComplete: "off"
 };
 
 exports.default = Input;

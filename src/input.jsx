@@ -1,9 +1,9 @@
-import React from 'react'; // eslint-disable-line no-unused-vars
-import shallowCompare from 'react-addons-shallow-compare';
-import classnames from 'classnames';
-import TextField from 'material-ui/TextField';
+import React from "react"; // eslint-disable-line no-unused-vars
+import shallowCompare from "react-addons-shallow-compare";
+import classnames from "classnames";
+import TextField from "material-ui/TextField";
 
-import filterInputAttributes from './filter-input-attributes';
+import filterInputAttributes from "./filter-input-attributes";
 
 /**
  * The input field
@@ -24,9 +24,9 @@ class Input extends React.Component {
   /**
    * When the input got changed
    */
-  onChange = (event) => {
+  onChange = event => {
     this.props.onChange(event.target.value);
-  }
+  };
 
   /**
    * When the input got focused
@@ -54,7 +54,8 @@ class Input extends React.Component {
    * When a key gets pressed in the input
    * @param  {Event} event The keydown event
    */
-  onInputKeyDown = event => { // eslint-disable-line complexity
+  onInputKeyDown = event => {
+    // eslint-disable-line complexity
     // Call props.onKeyDown if defined
     // Gives the developer a little bit more control if needed
     if (this.props.onKeyDown) {
@@ -115,25 +116,26 @@ class Input extends React.Component {
    */
   render() {
     const attributes = filterInputAttributes(this.props),
-      classes = classnames(
-        'geosuggest__input',
-        this.props.className
-      );
+      classes = classnames("geosuggest__input", this.props.className);
 
-    return <TextField className={classes}
-      id="geosuggest-material-ui"
-      ref='input'
-      type='text'
-      {...attributes}
-      error={this.props.error}
-      label={this.props.label}
-      value={this.props.value}
-      style={this.props.style}
-      onKeyDown={this.onInputKeyDown}
-      onChange={this.onChange}
-      onKeyPress={this.onKeyPress}
-      onFocus={this.onFocus}
-      onBlur={this.onBlur} />;
+    return (
+      <TextField
+        className={classes}
+        id="geosuggest-material-ui"
+        //ref='input'
+        type="text"
+        {...attributes}
+        error={this.props.error}
+        label={this.props.label}
+        value={this.props.value}
+        style={this.props.style}
+        onKeyDown={this.onInputKeyDown}
+        onChange={this.onChange}
+        onKeyPress={this.onKeyPress}
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
+      />
+    );
   }
 }
 
@@ -142,13 +144,13 @@ class Input extends React.Component {
  * @type {Object}
  */
 Input.defaultProps = {
-  className: '',
+  className: "",
   error: false,
-  value: '',
+  value: "",
   ignoreTab: false,
   onKeyDown: () => {},
   onKeyPress: () => {},
-  autoComplete: 'off'
+  autoComplete: "off"
 };
 
 export default Input;
